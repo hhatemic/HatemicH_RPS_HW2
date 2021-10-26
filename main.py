@@ -8,12 +8,37 @@ computerLives = 5
 
 player = False
 
+# define a win / lose function and invoke it
+# in our game loop when lives run out (player or computer)
+
+
+def winorlose(status):
+    print("You " + status + "! Would you like to play again?")
+    choice = input(" y / n?: ")
+
+    global playerLives
+    global computerLives
+    global player
+
+    if choice == "n":
+        print("better luck next time!")
+        exit()
+    else:
+        #reset and restart the game
+        playerLives = 5
+        computerLives = 5
+        player = False
+
+
+
 # save the player as a variable called player
 # the value of player will be one of three choices to type (input)
 # Boolean values are True or False - you can use these to check state
 # and then make programming choices based on their value.
 
+
 while player is False:
+
 
     player = input("Choose rock, paper, or scissors: ")
     computer = choices[randint(0, 2)]
@@ -61,29 +86,11 @@ while player is False:
     print("player lives: " + str(playerLives))
 
     if playerLives == 0:
-        print("you lost! would you like to play again?")
-        choice = input(" y / n ")
-
-        if choice == "n":
-            print("better luck next time!")
-            exit()
-        else:
-            # reset and restart game
-            playerLives = 5
-            computerLives = 5
-            player = False
+        # call the winorlose function here
+        winorlose("lost")
 
     elif computerLives == 0:
-        print("you won! would you like to play again?")
-        choice = input(" y / n ")
-
-        if choice == "n":
-            print("better luck next time!")
-            exit()
-        else:
-            # reset and restart game
-            playerLives = 5
-            computerLives = 5
-            player = False
+        # call the winorlose function here
+        winorlose("won")
 
     player = False
