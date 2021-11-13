@@ -13,25 +13,25 @@ from random import randint
 
 while gameVars.player is False:
 
-    gameVars.player = input("Choose rock, paper, or scissors: ")
-    computer = gameVars.choices[randint(0, 2)]
+    gameVars.player = input("Welcome! Pick between rock, paper, or scissors: ")
+    gameResults.computer = gameVars.choices[randint(0, 2)]
 
-    print("player chose: " + gameVars.player)
-    print("Computer chose: " + computer)
+    print("~~~~~ You chose: " + gameVars.player + " ~~~~~")
+    gameResults.gameResult(gameResults.computer)
 
     # an array is just a container. It holds multiple values in a 0-based index
     # you can store anything in an array
     # and retrieve it later. Arrays have square bracket notation
 
-    print("computer lives: " + str(gameVars.computerLives))
-    print("player lives: " + str(gameVars.playerLives))
+    print("Enemy lives: " + str(gameVars.computerLives))
+    print("Your lives: " + str(gameVars.playerLives))
 
     if gameVars.playerLives == 0:
         # call the winorlose function here
-        winlose.winorlose("lost")
+        winlose.winorlose("~~~~~ Aw Shucks! You lost!")
 
     elif gameVars.computerLives == 0:
         # call the winorlose function here
-        winlose.winorlose("win this game")
+        winlose.winorlose("~~~~~ Congrats! You've won!")
 
     gameVars.player = False
